@@ -8,77 +8,85 @@
 #include <cstdio> //zatrzymywanie konsoli
 using namespace std;
 
-int main()
+void show_assistant()
 {
-	int x;
-	cout << "Podaj ile rowerow stworzyc " << endl;
-	cin >> x;
-	Bike *rowerek = new Bike[x]; //dynamiczne tworzenie obiketów
-
-	Bike kross("Kross", "Namtec", 5000);
-	Bike trek("Trek", "3700", 1650, 85), model_1;
-	cout<<trek ; //operator wyjscia
-	getchar();
-
-	
-
-	Bike kopiaObiektu(trek); //próba kopi obiektu
-	cout << trek;
-	cout << "Skopiowano obiekt trek" << endl;
-	cout << "Obiekt skopiowany" << endl;
-	cout << kopiaObiektu;
-	cout << endl;
-
-
-
 	cout << endl << "Nacisnij klawisz [ENTER] aby kontynuowac." << endl;
 	cout << "_________________________________________" << endl;
 	getchar();
+}
+
+int main()
+{
+	
+	Bike kross("Kross", "Namtec", 5000);
+	Bike trek("Trek", "3700", 1650);
+	Bike model_1;
+	
+	//Kopiowanie obiektu
+	Bike kopiaObiektu(trek); 
+	cout << "Skopiowano obiekt trek" << endl << "--------" << endl;
+	trek.description();
+	cout << "Obiekt skopiowany:" << endl << "--------" << endl;
+	kopiaObiektu.description();
+	
+
+	show_assistant();
+	kopiaObiektu.show_number();
 
 
-	cout << "Testowanie operatorow" << endl;
-	//Operator ==
+	cout << "TESTOWANIE OPERATOROW" << endl << "********************" << endl;
+	//1.Operator ==
 	cout << "Testowanie operatora ==" << endl;
 	if (trek == kross)
 		cout << " == true" << endl;
 	else
 		cout << " == false" << endl;
-	//Operator <
+	show_assistant();
+	//2.Operator <
 	cout << "Testowanie operatora <" << endl;
 	if (trek < kross)
 		cout << " < true" << endl;
 	else
 		cout << " < false" << endl;
-	//Operator >
+	show_assistant();
+	//3.Operator >
 	cout << "Testowanie operatora >" << endl;
 	if (trek > kross)
 		cout << " > true" << endl;
 	else
 		cout << " > false" << endl;
-	//Operator++
+	show_assistant();
+	//4.Operator++
 	cout << "Testowanie operatora ++" << endl;
-	kross++;//zwiêksza wartosc
-	cout<<kross;
-	//Operator--
+	kross++;
+	kross.description();
+	show_assistant();
+	//5.Operator--
 	cout << "Testowanie operatora ++" << endl;
-	model_1--;//zwiêksza wartosc
+	model_1--;
 	model_1.description();
-	//Operator +
+	show_assistant();
+	//6.Operator +
 	cout << "Testowanie operatora +" << endl;
 	model_1 + kross;
 	model_1.description();
-	//Operator -
-	cout << "Testowanie operatora -" << endl;
+	show_assistant();
+	//7.Operator =
+	cout << "Testowanie operatora =" << endl;
 	model_1 = kross;
 	model_1.description();
-
+	show_assistant();
+	//8.Operator <<
+	cout << "Testowanie operatora <<" << endl; 
+	cout << model_1; 
+	show_assistant();
+	//9.Operator rzutowania
+	cout << "Testowanie operatora rzutowania" << endl;
+	cout << (int)kross << endl; 
+	show_assistant();
 
 	
 
-	cout << endl << "Nacisnij klawisz [ENTER] aby kontynuowac." << endl;
-	cout << "_________________________________________" << endl;
-	kopiaObiektu.show_number(); //sprawdzenie ile rowerow powsta³o
-	getchar();
-	delete rowerek;
 	return 0;
+	
 }

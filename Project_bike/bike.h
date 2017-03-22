@@ -4,6 +4,7 @@
 #include "facilities.h"
 #include "specs.h"
 #include "wheel.h"
+#include <cstdio>
 using namespace std;
 
 
@@ -14,14 +15,13 @@ class Bike
 {
 public:
 	Bike(const Bike &bike); //konstruktor kopij¹cy
-	Bike(string="Romet", string="Wigry 2", int=1000, int=80);
+	Bike(string="Romet", string="Wigry 2", int=1000, int=4);
 	~Bike();
 	void show_number();
 	void description();
 	void change_name();
 	void change_model();
 	void full_DSC();
-//	void dodaj_kolo(string nazwa_s);
 	static int number_of_objects;
 
 	Bike& operator = (const Bike &bike); //opertor przypisuj¹cy ocenê, nazwê i model drugiemu rowerowi
@@ -31,29 +31,19 @@ public:
 	bool operator > (const Bike &bike); //operator sprawdzajacy czy rower (wywo³any w sk³adni po lewej ma wiêksz¹ cenê od wywa³anego w kodzie po prawej
 	Bike& operator ++ (int); //zwiêksza cenê
 	Bike& operator -- (int); //zwiêksza cenê o 300, zmniejsza ocenê
-	operator int() const;
-	friend std::istream & operator >> (std::istream &is, Bike &bike);
 	friend std::ostream & operator << (std::ostream &os, const Bike &bike);
-	
+	operator int() {return price;} //operator rzutowania
+
 
 private:
 	
+	int price; 
 	Specs specs;
 	Facilities facilities;
-	Wheel *wheel;
+	Wheel *wheel=nullptr;
 	string model;
-	string nazwa;
+	string name;
 	int metascore;
-	int price;
-
-	
-
-
-	
-	Bike& operator += (const Bike &bike);
-	Bike& operator -= (const Bike &bike);
-	Bike& operator *= (const Bike &bike);
-
 	
 };
 

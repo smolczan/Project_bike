@@ -15,7 +15,7 @@ Wheel::~Wheel()
 Wheel::Wheel(string x, string y, int z, int w, int p)
 {
 #ifdef _DEBUG
-	cout << "Wywolano domyslny destruktor Kolo" << endl;
+	cout << "Wywolano domyslny konstruktor Kolo" << endl;
 #endif
 	brakes= x;
 	tyres= y;
